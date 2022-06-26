@@ -14,20 +14,21 @@ export class PorPaisComponent  {
   hayError:boolean = false;
   paises  :Pais[] = [];
 //**Esta clase accede al servicio que retorna la url y luego con subcribe dispara el observable*/
-  buscar(){
+  buscar(termino:string){
+    this.termino = termino;
     this.hayError = false;
     this.paisService.buscar(this.termino).subscribe((paises) => {
-      this.paises = paises;
-      console.log(paises[0].cca2)
-      
+      this.paises = paises;      
     } , (err) => {
 
         this.hayError = true;
         this.paises = [];
     })
   }
+
+  sugerencias( termino:string) {
+    this.hayError = false
+    //TODO crear sugerencias
+  }
   constructor(private paisService: PaisService) { }
-
- 
-
 }

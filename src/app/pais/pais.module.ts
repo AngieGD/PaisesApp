@@ -8,6 +8,7 @@ import { PorRegionComponent } from './pages/por-region/por-region.component';
 import { VerRegionComponent } from './pages/ver-region/ver-region.component';
 import { RouterModule } from '@angular/router';
 import { PaisTablaComponent } from './components/pais-tabla/pais-tabla.component';
+import { PaisInputComponent } from './components/pais-input/pais-input.component';
 
 
 
@@ -19,7 +20,8 @@ import { PaisTablaComponent } from './components/pais-tabla/pais-tabla.component
     PorPaisComponent,
     PorRegionComponent,
     VerRegionComponent,
-    PaisTablaComponent
+    PaisTablaComponent,
+    PaisInputComponent
 
     
   ],
@@ -28,6 +30,7 @@ import { PaisTablaComponent } from './components/pais-tabla/pais-tabla.component
     PorPaisComponent,
     PorRegionComponent,
     VerRegionComponent
+    
 
   ],
   imports: [

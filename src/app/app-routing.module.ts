@@ -30,7 +30,7 @@ const routes: Routes =[
     },
     {
         path: 'pais/:id',
-        component: VerRegionComponent
+        component: VerRegionComponent //ES PAIS
     },
     // La siguiente ruta es para cuando 
     {
