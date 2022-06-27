@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Pais } from '../../interfaces/pais.interface';
+import { Capital } from '../../interfaces/capital.interface';
+
 import { PaisService } from '../../services/pais.service';
 
 @Component({
@@ -10,18 +11,22 @@ import { PaisService } from '../../services/pais.service';
 export class PorCapitalComponent implements OnInit {
   termino :string = '';
   hayError:boolean = false;
-  paises  :Pais[] = [];
+  capital  :Capital[] = [];
   buscar(termino:string) {
     this.termino = termino;
     this.hayError = false;
-    this.paisService.buscar(this.termino).subscribe(paises => {
-      this.paises = paises;
+    this.paisService.buscarCap({ termino: this.termino }).subscribe(capital => {
+      this.capital = capital;
+      console.log(capital)
     }, (err) => {
       this.hayError = true;
+      this.capital = [];
+
        
     })
-    
   }
+  
+  
   sugerencias( termino:string) {
     this.hayError = false
     //TODO crear sugerencias
