@@ -9,10 +9,10 @@ import { Pais } from '../interfaces/pais.interface';
 })
 
 export class PaisService {
-
-  private urlApi:string =  'https://restcountries.com/v3.1/';
+  
+  private urlApi:string =  'https://restcountries.com/v';
   public buscar({ termino }: { termino: string; }):Observable<Pais[]> {
-    const url = `${this.urlApi}name/${termino}`;
+    const url = `${this.urlApi}3.1/name/${termino}`;
     
     return this.http.get<Pais[]>(url);
               // .pipe(
@@ -23,7 +23,7 @@ export class PaisService {
   }
 
   public buscarCap({ termino }: { termino: string; }):Observable<Capital[]> {
-    const url = `${this.urlApi}capital/${termino}`; //capital/{capital}
+    const url = `${this.urlApi}3.1/capital/${termino}`; //capital/{capital}
     return this.http.get<Capital[]>(url);
               // .pipe(
               //   catchError(err => of(
@@ -32,6 +32,15 @@ export class PaisService {
               // )
   }
   
+  public getForAlpha(id: string):Observable<Pais> {
+    const url = `${this.urlApi}2/alpha/${id}`; //capital/{capital}
+    return this.http.get<Pais>(url);
+              // .pipe(
+              //   catchError(err => of(
+              //     ['Hay un error']
+              //   ))
+              // )
+  }
 
 
   constructor( private http:HttpClient) { }

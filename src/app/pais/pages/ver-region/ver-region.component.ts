@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; 
+import {switchMap} from 'rxjs/operators'
+import { Pais } from '../../interfaces/pais.interface';
+import { PaisService } from '../../services/pais.service';
 
 @Component({
   selector: 'app-ver-region',
@@ -7,14 +10,29 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./ver-region.component.css']
 })
 export class VerRegionComponent implements OnInit {
-
-  constructor(private activateRoute: ActivatedRoute) { }
+  public pais!: Pais;
+  constructor(private activateRoute: ActivatedRoute,
+              private paisService: PaisService) { }
 
   ngOnInit(): void {
-    this.activateRoute.params
-      .subscribe( params => {
-        console.log(params);
-      })
+
+//    this.id = this.activateRoute.snapshot.paramMap.get('id')
+      this.activateRoute.params
+        .pipe(
+          switchMap(({id}) => this.paisService.getForAlpha(id))
+        )
+        .subscribe(resp => {
+          this.pais = resp;
+          console.log(this.pais)
+        });
+    
+//    this.activateRoute.params
+//      .subscribe( ({id}) => {
+//       this.paisService.getForAlpha(this.id)
+//         .subscribe(pais => {
+//           console.log(pais)
+//         });
+//      });   
   }
 
 }
