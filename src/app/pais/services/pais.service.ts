@@ -41,6 +41,17 @@ export class PaisService {
               //   ))
               // )
   }
+// https://restcountries.com/v2/regionalbloc/{regionalbloc}
+  
+  public getRegion(id: string):Observable<Pais[]> {
+    const url = `${this.urlApi}2/regionalbloc/${id}`; //capital/{capital}
+    return this.http.get<Pais[]>(url);
+              // .pipe(
+              //   catchError(err => of(
+              //     ['Hay un error']
+              //   ))
+              // )
+  }
 
 
   constructor( private http:HttpClient) { }
